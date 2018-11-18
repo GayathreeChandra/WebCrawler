@@ -1,0 +1,36 @@
+package com.wipro.webcrawler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class SearchLink {
+
+	private List<Crawler> crawler;
+
+	public SearchLink(List<Crawler> crawler) {
+		this.crawler = crawler;
+	}
+
+	public List<Crawler> getCrawler() {
+		return crawler;
+	}
+
+	public List<Crawler> searchlink(){
+		List<Crawler> urls = new ArrayList<Crawler>();
+		for(Crawler c:this.crawler){
+			Document doc;
+			try{
+				doc=Jsoup.connect(c.getStatus()).get();
+				
+			}
+			
+		}
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,21 @@
+package com.wipro.webcrawler.test;
+import static org.mockito.Mockito.*
+import com.wipro.webcrawler.SearchLink;
+
+public class SerachLinkTest {
+	@Mock
+	SearchLink searchlink;
+	
+	public void test(){
+		SearchLink  searchlink = mock(SearchLink.class);
+	}
+	
+	@test
+	public void shouldvisittrue(){
+		String Url= "https://wiprodigital.";
+		when(searchlink.shouldvisit(Url)).thenReturn(true);
+		assertequals("contains https://wiprodigital.",searchlink.shouldvisit(Url));
+	}
+	
+
+}

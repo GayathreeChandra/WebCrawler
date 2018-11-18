@@ -1,0 +1,21 @@
+package com.wipro.webcrawler;
+
+public class Crawler {
+
+	private String Crawlingstatus;
+
+	public Crawler(String crawlingstatus) {
+		Crawlingstatus = crawlingstatus;
+	}
+
+	public String getCrawlingstatus() {
+		return Crawlingstatus;
+	}
+
+	public void setCrawlingstatus(String crawlingstatus) {
+		Crawlingstatus = crawlingstatus;
+	}
+
+	
+
+}

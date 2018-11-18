@@ -1,0 +1,61 @@
+package com.wipro.webcrawler;
+
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Pattern;
+
+public class SearchLink{
+
+	private List<Crawler> crawler;
+
+	public SearchLink(List<Crawler> crawler) {
+		this.crawler = crawler;
+	}
+
+	public List<Crawler> getCrawler() {
+		return crawler;
+	}
+	
+	public List<Crawler> searchlink(){
+		final String FNAME = "test.txt";
+		List<Crawler> urls = new ArrayList<Crawler>();
+		for(Crawler c:this.crawler){
+			Document doc;
+			try{
+				doc=Jsoup.connect(c.getStatus()).get();
+				Elements links=doc.select("a[href]");
+				for(Element link:links){
+					System.out.println(link.attr("href"));
+					urls.add(new Crawler(link.attr("href")));
+					BufferedWriter bw = 
+						new BufferedWriter (new FileWriter (FNAME));
+					System.out.println("new file creted");
+
+					for(Crawler cr:urls){
+							bw.write(cr+"\n");
+					}
+					bw.close();
+				}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			//FileWriter wr=new FileWriter("output.text");
+			
+		}
+		return urls;
+		
+	}
+	
+	
+}
