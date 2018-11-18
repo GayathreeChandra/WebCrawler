@@ -1,0 +1,72 @@
+package com.wipro.webcrawler;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class SearchLink {
+
+	private List<Crawler> crawler;
+
+	public SearchLink(List<Crawler> crawler) {
+		this.crawler = crawler;
+	}
+
+	public List<Crawler> getCrawler() {
+		return crawler;
+	}
+	/**
+	 * This method is used only when the restriction is to avoid external links.
+	 * @param url
+	 * @return
+	 */
+
+	private boolean shouldvisit(String url) {
+		if (url.startsWith("https://wiprodigital.")) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	/**
+	 * This Method is used to parse the URL's 
+	 * Jsoup library is included to parse the links.
+	 * Links related to the seed link is written on a text file.
+	 * @return
+	 */
+
+	public List<Crawler> searchlink() {
+		//List<Crawler> urls = new ArrayList<Crawler>();
+		//for (Crawler c : urls) {
+			Document docElement;
+			try {
+				docElement = Jsoup.connect(c.getCrawlingstatus()).get();
+				Elements links = docElement.select("a[href]");
+				File file = new File("output.txt");
+				PrintWriter printwriter = new PrintWriter(new FileOutputStream(
+						file));
+				for (Element link : links) {
+					String linksPresent = link.attr("href").toString();
+					if (shouldvisit(linksPresent))//This if condition can be removed if there is no restriction of avoiding external links
+						printwriter.write(linksPresent + "\n");
+				}
+				printwriter.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		
+		return urls;
+
+	}
+
+}
