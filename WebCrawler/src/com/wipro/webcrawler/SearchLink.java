@@ -65,7 +65,7 @@ public class SearchLink {
 			}
 
 		}
-		return urls;//returns the url
+		return urls;
 
 	}
 

@@ -9,6 +9,7 @@ public class SeedLink {
 		crawler.add(new Crawler("https://wiprodigital.com/"));
 		SearchLink searchlink=new SearchLink(crawler);
 		searchlink.search();
+		
 	}
 
 }
