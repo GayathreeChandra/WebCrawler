@@ -19,4 +19,3 @@ INDEX VERSION 1.125+C:\Users\sthangamparthiban\test\WebCrawler\.metadata\.plugin
 2289921400.index
 2112493236.index
 1831073266.index
-1076803667.index
